@@ -1,0 +1,1 @@
+package com.focusflow.controller; import org.springframework.web.bind.annotation.*; import java.util.*; @RestController @RequestMapping("/api/system") public class SystemController{@GetMapping("/health") public Map<String,Object>health(){return Map.of("status","UP","service","FocusFlow","time",System.currentTimeMillis());}}

@@ -1,0 +1,1 @@
+package com.focusflow.repository; import com.focusflow.model.HabitItem; import org.springframework.data.jpa.repository.JpaRepository; import java.util.*; public interface HabitItemRepository extends JpaRepository<HabitItem,Long>{ List<HabitItem> findByClientId(String clientId); }

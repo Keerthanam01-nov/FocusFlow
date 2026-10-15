@@ -1,0 +1,35 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FocusFlow — Real Data Setup</title><link rel="stylesheet" href="/css/dashboard.css"></head>
+<body><main style="max-width:950px;margin:auto">
+<div class="panel glass" style="margin-top:60px;padding:36px">
+<span class="tag">REAL DATA • JAVA ENGINE</span>
+<h1>Connect FocusFlow to your real digital behaviour.</h1>
+<p class="muted" style="font-size:13px;line-height:1.7">
+A normal website cannot read Windows application usage because browsers intentionally isolate that data.
+FocusFlow solves this with a small Java Windows agent and a Chrome/Edge extension. The website, backend and database remain Java/Spring Boot + MySQL.
+</p>
+
+<h3>1 · Start MySQL</h3>
+<pre>CREATE DATABASE focusflow;</pre>
+
+<h3>2 · Start the Java backend</h3>
+<pre>D:\apache-maven-3.9.16\bin\mvn.cmd spring-boot:run</pre>
+<p class="muted">Default URL: http://localhost:8081</p>
+
+<h3>3 · Start the Java Windows agent</h3>
+<pre>cd windows-agent-java
+D:\apache-maven-3.9.16\bin\mvn.cmd clean package
+java -jar target\focusflow-windows-agent-1.0.0.jar</pre>
+
+<h3>4 · Install the browser companion</h3>
+<p>Chrome/Edge → Extensions → Developer mode → Load unpacked → select the <b>browser-extension</b> folder.</p>
+
+<h3>5 · Enable live YouTube transformation</h3>
+<p>Create a YouTube Data API v3 key and set:</p>
+<pre>$env:YOUTUBE_API_KEY="YOUR_KEY"
+D:\apache-maven-3.9.16\bin\mvn.cmd spring-boot:run</pre>
+<p class="muted">Without a key FocusFlow stays honest and does not invent YouTube data.</p>
+
+<a class="primary" href="/dashboard.html" style="display:inline-block;text-decoration:none;padding:12px 18px;border-radius:10px;color:#062014">Open Command Center →</a>
+</div></main></body></html>

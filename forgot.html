@@ -1,0 +1,11 @@
+async function send(){
+  const r = await fetch('/api/auth/forgot',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email.value})});
+  msg.textContent = 'If that email exists, a reset link has been sent.';
+}
+// reset.html (link looks like /reset.html?token=XYZ)
+async function reset(){
+  const token = new URLSearchParams(location.search).get('token');
+  const r = await fetch('/api/auth/reset',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token,password:password.value})});
+  msg.textContent = r.ok ? 'Password updated. Redirecting…' : 'Link invalid or expired.';
+  if(r.ok) setTimeout(()=>location='/login.html',1500);
+}

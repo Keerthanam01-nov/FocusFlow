@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>FocusFlow — Create Account</title>
+    <link rel="stylesheet" href="/css/auth.css">
+
+    <style>
+        body {
+            min-height: 100vh;
+        }
+
+        .card {
+            animation: cardIn .6s ease;
+        }
+
+        @keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(25px) scale(.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 12px;
+        }
+
+        button {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        #msg {
+            min-height: 24px;
+            margin-top: 12px;
+            font-weight: 600;
+        }
+
+        .success {
+            color: #35d07f;
+        }
+
+        .error {
+            color: #ff6b6b;
+        }
+
+        .loading {
+            opacity: .7;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="auth">
+
+    <div class="brand">
+        FF <b>FocusFlow</b>
+    </div>
+
+    <div class="card">
+
+        <span class="tag">START YOUR ATTENTION JOURNEY</span>
+
+        <h1>Create your profile.</h1>
+
+        <p>
+            Build better focus, track your habits and turn productive
+            actions into progress.
+        </p>
+
+        <input
+            id="name"
+            type="text"
+            placeholder="Your name"
+            autocomplete="name"
+            required
+        >
+
+        <input
+            id="email"
+            type="email"
+            placeholder="Email address"
+            autocomplete="email"
+            required
+        >
+
+        <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            autocomplete="new-password"
+            minlength="6"
+            required
+        >
+
+        <input
+            id="interests"
+            type="text"
+            placeholder="Interests e.g. Java, AI, Finance"
+        >
+
+        <button id="registerBtn" type="button" onclick="register()">
+            Create account →
+        </button>
+
+        <div id="msg"></div>
+
+        <a href="/login.html">
+            Already have an account? Sign in
+        </a>
+
+    </div>
+</div>
+
+
+<script>
+
+async function register() {
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const interests = document.getElementById("interests").value.trim();
+
+    const msg = document.getElementById("msg");
+    const button = document.getElementById("registerBtn");
+
+    msg.className = "";
+    msg.textContent = "";
+
+    if (!name || !email || !password) {
+        msg.className = "error";
+        msg.textContent = "Please enter your name, email and password.";
+        return;
+    }
+
+    if (password.length < 6) {
+        msg.className = "error";
+        msg.textContent = "Password must contain at least 6 characters.";
+        return;
+    }
+
+    button.classList.add("loading");
+    button.textContent = "Creating your account...";
+
+    try {
+
+        const response = await fetch("/api/auth/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                password: password,
+                interests: interests
+            })
+        });
+
+        const text = await response.text();
+
+        let data = {};
+
+        try {
+            data = JSON.parse(text);
+        } catch {
+            data = {
+                message: text
+            };
+        }
+
+        if (!response.ok) {
+
+            msg.className = "error";
+
+            if (response.status === 409) {
+                msg.textContent = "This email is already registered. Please sign in.";
+            } else {
+                msg.textContent =
+                    data.message ||
+                    "Registration failed. Please try again.";
+            }
+
+            return;
+        }
+
+        localStorage.setItem("ff_user", JSON.stringify(data));
+
+        msg.className = "success";
+        msg.textContent = "Account created successfully! Opening your dashboard...";
+
+        setTimeout(() => {
+            window.location.href = "/dashboard.html";
+        }, 700);
+
+    } catch (error) {
+
+        console.error(error);
+
+        msg.className = "error";
+        msg.textContent =
+            "Cannot connect to FocusFlow server. Make sure backend is running on port 8081.";
+
+    } finally {
+
+        button.classList.remove("loading");
+        button.textContent = "Create account →";
+    }
+}
+
+</script>
+
+</body>
+</html>

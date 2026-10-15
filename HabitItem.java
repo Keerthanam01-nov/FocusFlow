@@ -1,0 +1,3 @@
+package com.focusflow.model;
+import jakarta.persistence.*;
+@Entity @Table(name="habit_items") public class HabitItem { @Id @GeneratedValue(strategy=GenerationType.IDENTITY) private Long id; private String clientId; private String title; private Boolean completedToday; private Integer streak; public HabitItem(){} public Long getId(){return id;} public String getClientId(){return clientId;} public void setClientId(String v){clientId=v;} public String getTitle(){return title;} public void setTitle(String v){title=v;} public Boolean getCompletedToday(){return completedToday;} public void setCompletedToday(Boolean v){completedToday=v;} public Integer getStreak(){return streak;} public void setStreak(Integer v){streak=v;} }

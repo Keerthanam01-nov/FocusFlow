@@ -1,0 +1,1 @@
+package com.focusflow.repository; import com.focusflow.model.GoalItem; import org.springframework.data.jpa.repository.JpaRepository; import java.util.*; public interface GoalItemRepository extends JpaRepository<GoalItem,Long>{ List<GoalItem> findByClientId(String clientId); }

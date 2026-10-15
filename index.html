@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FocusFlow AI — Turn distraction into growth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#03100b;color:#effff7;font-family:Inter,Arial;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:-20%;background:radial-gradient(circle at 70% 30%,#16c97828,transparent 35%),radial-gradient(circle at 20% 80%,#00a8ff18,transparent 30%);z-index:-2}
+nav{display:flex;justify-content:space-between;align-items:center;padding:24px 6%;position:sticky;top:0;background:#03100bcc;backdrop-filter:blur(20px);z-index:5}.brand{font-weight:900;letter-spacing:-.03em;font-size:20px}.brand span{color:#62f2a4}.navlinks{display:flex;gap:10px}.btn{padding:12px 17px;border-radius:12px;text-decoration:none;font-weight:800;font-size:12px}.primary{background:#62f2a4;color:#052116}.ghost{border:1px solid #ffffff18;color:#effff7}
+.hero{min-height:78vh;display:grid;place-items:center;text-align:center;padding:70px 7%}.hero h1{font-size:clamp(46px,8vw,100px);line-height:.9;letter-spacing:-.08em;margin:20px 0}.hero h1 span{color:#62f2a4}.hero p{max-width:760px;margin:auto;color:#9ab2a7;line-height:1.8}.actions{display:flex;justify-content:center;gap:10px;margin-top:28px}.orb{width:360px;height:360px;border:1px solid #62f2a430;border-radius:50%;position:absolute;opacity:.5;animation:spin 18s linear infinite}.orb:after{content:"";position:absolute;inset:55px;border:1px solid #62f2a422;border-radius:50%}@keyframes spin{to{transform:rotate(360deg)}}
+section{padding:70px 7%}.eyebrow{color:#62f2a4;font-size:10px;font-weight:900;letter-spacing:.18em}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:25px}.card{padding:28px;border:1px solid #ffffff12;border-radius:24px;background:#ffffff05;backdrop-filter:blur(18px);transition:.3s;transform-style:preserve-3d}.card:hover{transform:translateY(-7px) rotateX(2deg) rotateY(-2deg);border-color:#62f2a433}.card h3{margin:10px 0}.card p{color:#8fa99d;font-size:12px;line-height:1.7}.feature{font-size:30px}.footer{padding:40px 7%;border-top:1px solid #ffffff10;color:#6f8b7e;font-size:11px}
+@media(max-width:800px){.grid{grid-template-columns:1fr}.navlinks a:first-child{display:none}.hero{padding-top:50px}.orb{width:260px;height:260px}}
+</style></head>
+<body>
+<nav><div class="brand"><span>FF</span> FocusFlow AI</div><div class="navlinks"><a class="btn ghost" href="/login.html">Sign in</a><a class="btn primary" href="/register.html">Start free</a></div></nav>
+<main>
+<section class="hero">
+<div class="orb"></div>
+<div><span class="eyebrow">THE ATTENTION OS</span><h1>Turn distraction<br>into <span>growth.</span></h1>
+<p>FocusFlow observes your real digital behaviour, detects distraction loops and redirects the next decision toward learning, focus and healthier habits.</p>
+<div class="actions"><a class="btn primary" href="/register.html">Build my attention system →</a><a class="btn ghost" href="/tracker.html">See how real tracking works</a></div></div>
+</section>
+<section><span class="eyebrow">WHY FOCUSFLOW IS DIFFERENT</span><div class="grid">
+<div class="card"><div class="feature">◎</div><h3>Adaptive Attention Budget</h3><p>Your entertainment allowance is not fixed. As distraction rises, the system progressively increases learning recommendations instead of simply blocking everything.</p></div>
+<div class="card"><div class="feature">↻</div><h3>Learning Swap</h3><p>A Shorts session can be redirected into a learning Short matched to Java, AI, DSA, finance, English, science or your selected goal.</p></div>
+<div class="card"><div class="feature">◈</div><h3>Explainable Behaviour AI</h3><p>A Java attention engine converts switching, Shorts exposure, late-night use and productive time into an interpretable attention state.</p></div>
+<div class="card"><div class="feature">⌘</div><h3>Real Windows Tracking</h3><p>An optional Java desktop agent records foreground application time without recording keystrokes, screenshots, microphone or camera.</p></div>
+<div class="card"><div class="feature">⚡</div><h3>Focus Shield</h3><p>Temporarily blocks selected distracting websites through the browser companion while the backend records the focus session.</p></div>
+<div class="card"><div class="feature">✦</div><h3>Identity Loop</h3><p>Goals, habits, focus sessions and XP turn productivity into a visible progression system instead of another screen-time report.</p></div>
+</div></section>
+<section><span class="eyebrow">BUILT FOR REAL LIFE</span><h2 style="font-size:42px;letter-spacing:-.05em">One system. Multiple signals.</h2><p style="color:#8fa99d;max-width:700px;line-height:1.8">Browser activity + Windows activity + focus sessions + goals + habits → one attention model. The product is designed to earn trust by distinguishing measured data from recommendations.</p></section>
+</main>
+<div class="footer">FocusFlow AI · Turn digital distractions into meaningful growth.</div>
+<script>document.querySelectorAll('.card').forEach(c=>c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();c.style.transform=`perspective(700px) rotateX(${-(e.clientY-r.top-r.height/2)/30}deg) rotateY(${(e.clientX-r.left-r.width/2)/30}deg) translateY(-5px)`;c.addEventListener('mouseleave',()=>c.style.transform='')}))</script>
+</body></html>
